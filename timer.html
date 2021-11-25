@@ -1,0 +1,49 @@
+<style>
+.button {
+    background-image: linear-gradient(to right, #00e087, #a8eb12);
+    color: black;
+    font-family: Arial Bold;
+    font-size: 30px;
+    text-decoration: none;
+    padding: 3px;
+}
+.gag{
+    background-image: linear-gradient(to right, #00e087, #a8eb12);
+    color: black;
+    font-family: Arial Bold;
+    font-size: 30;
+    text-decoration: none;
+    padding: 3px;
+}
+</style>
+
+<div style="text-align: center;">
+<a href="URL" target="_blank" id="download" class="button">Download File</a>
+
+<button id="btn" class="gag">Click to Generate Link</button>
+
+<script>
+var downloadButton = document.getElementById("download");
+var counter = 3;
+var newElement = document.createElement("p");
+newElement.innerHTML = "3 sec";
+var id;
+
+downloadButton.parentNode.replaceChild(newElement, downloadButton);
+
+function startDownload() {
+    this.style.display = 'none';
+    id = setInterval(function () {
+        counter--;
+        if (counter < 0) {
+            newElement.parentNode.replaceChild(downloadButton, newElement);
+            clearInterval(id);
+        } else {
+            newElement.innerHTML = +counter.toString() + " Sec";
+        }
+    }, 1500);
+};
+
+var clickbtn = document.getElementById("btn");
+clickbtn.onclick = startDownload;
+</script>
